@@ -5,7 +5,7 @@ The Akan Name Generator is an interactive web application that calculates a user
 **Nicolette Okora**
 ## Contact Information
 nicolettenyaboke5@gmail.com
-## Languages and technology Used:
+## Languages and Technology Used:
 * HTML
 * CSS
 * JAVASCRIPT
