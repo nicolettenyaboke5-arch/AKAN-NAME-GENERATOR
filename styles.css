@@ -1,11 +1,10 @@
 :root {
-    --primary-color: #00c4e6;
-    --secondary-color: #f9d423;
-    --dark-color: #2c3e50;
-    --light-color: #f8f9fa;
+    --primary-color: #4a5568;
+    --secondary-color: #e2e8f0;
+    --dark-color: #2d3748;
+    --light-color: #f7fafc;
     --white: #ffffff;
-    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -15,8 +14,8 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    font-family: Arial, sans-serif;
+    background-color: #ececec;
     color: var(--dark-color);
     min-height: 100vh;
     display: flex;
@@ -29,51 +28,44 @@ body {
     background-color: var(--white);
     max-width: 500px;
     width: 100%;
-    padding: 40px 30px;
-    border-radius: 12px;
+    padding: 30px;
+    border-radius: 8px;
     box-shadow: var(--shadow);
     text-align: center;
 }
 
 header h1 {
-    font-size: 2.2rem;
-    margin-bottom: 12px;
-    color: var(--primary-color);
+    color: var(--dark-color);
+    margin-bottom: 10px;
 }
 
 .description {
-    font-size: 0.95rem;
-    line-height: 1.6;
     color: #666;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+    line-height: 1.5;
 }
 
 .form-group {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     text-align: left;
 }
 
 label {
     display: block;
-    font-weight: 600;
     margin-bottom: 8px;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-weight: bold;
 }
 
 input[type="date"] {
     width: 100%;
-    padding: 12px;
-    border: 2px solid #e0e0e0;
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: var(--transition);
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
 }
 
 input[type="date"]:focus {
-    border-color: var(--primary-color);
     outline: none;
+    border-color: var(--primary-color);
 }
 
 .radio-group {
@@ -84,68 +76,56 @@ input[type="date"]:focus {
 .radio-label {
     display: flex;
     align-items: center;
-    gap: 8px;
-    cursor: pointer;
+    gap: 5px;
     font-weight: normal;
-    text-transform: none;
 }
 
 .radio-label input {
-    accent-color: var(--primary-color);
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
 }
 
 button {
     width: 100%;
-    padding: 14px;
+    padding: 12px;
     border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: bold;
+    border-radius: 5px;
     cursor: pointer;
-    transition: var(--transition);
+    margin-top: 10px;
 }
 
 #submitBtn {
     background-color: var(--primary-color);
-    color: var(--white);
+    color: white;
 }
 
 #submitBtn:hover {
-    background-color: #cc5200;
-    transform: translateY(-2px);
+    background-color: #3b4556;
 }
 
 .result-card {
-    margin-top: 30px;
-    padding: 20px;
+    margin-top: 25px;
+    padding: 15px;
     background-color: var(--light-color);
-    border-left: 5px solid var(--primary-color);
-    border-radius: 6px;
-    animation: fadeIn 0.5s ease-in-out;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .result-card h2 {
-    font-size: 1.3rem;
     margin-bottom: 10px;
 }
 
 #resultText {
-    font-size: 1.1rem;
     margin-bottom: 15px;
-    font-weight: 500;
 }
 
 #clearBtn {
-    background-color: #7f8c8d;
-    color: var(--white);
-    padding: 10px;
-    font-size: 0.9rem;
+    background-color: #777;
+    color: white;
 }
 
 #clearBtn:hover {
-    background-color: #95a5a6;
+    background-color: #666;
 }
 
 .hidden {
@@ -153,12 +133,7 @@ button {
 }
 
 footer {
-    margin-top: 30px;
-    font-size: 0.8rem;
-    color: #999;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    margin-top: 25px;
+    color: #777;
+    font-size: 0.9rem;
 }
