@@ -1,65 +1,56 @@
-document.getElementById('akanForm').addEventListener('submit', function(event) {
+let form = document.getElementById("birthForm");
+
+form.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    // 1. Retrieve User Inputs
-    const dateInput = document.getElementById('birthdate').value;
-    const genderInput = document.querySelector('input[name="gender"]:checked');
+    let birthdate = document.getElementById("birthdate").value;
+    let gender = document.querySelector('input[name="gender"]:checked');
 
-    // 2. Form Input Validation
-    if (!dateInput || !genderInput) {
-        alert("Error: Please provide both your birthdate and gender.");
+    if (birthdate == "" || gender == null) {
+        alert("Please enter your birthdate and choose your gender.");
         return;
     }
 
-    const birthDate = new Date(dateInput);
-    const day = birthDate.getDate();
-    const month = birthDate.getMonth() + 1; // Months are 0-indexed in JS
-    const year = birthDate.getFullYear();
-    const gender = genderInput.value;
+    let date = new Date(birthdate);
 
-    // Check for logical limits
-    if (day < 1 || day > 31 || month < 1 || month > 12) {
-        alert("Error: Invalid date format or numeric boundary values.");
-        return;
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+    let CC = parseInt(year.toString().substring(0, 2));
+    let YY = parseInt(year.toString().substring(2, 4));
+
+    let answer = ((CC / 4) - (2 * CC) - 1 + (5 * YY / 4) + (26 * (month + 1) / 10) + day) % 7;
+
+    answer = Math.floor(answer);
+
+    if (answer < 0) {
+        answer = answer + 7;
     }
 
-    // 3. Extract Formula Parameters
-    const CC = parseInt(year.toString().substring(0, 2));
-    const YY = parseInt(year.toString().substring(2, 4));
-    const MM = month;
-    const DD = day;
+    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-    // 4. Calculate Day of the Week via the Required Formula
-    // Added +35 to eliminate negative results during modulus evaluation
-    let dayOfWeek = Math.floor(((CC / 4) - (2 * CC) - 1 + (5 * YY / 4) + (26 * (MM + 1) / 10) + DD) % 7);
-    
-    // Normalize index configuration to ensure it matches Sunday(0) through Saturday(6)
-    dayOfWeek = (dayOfWeek + 7) % 7;
+    let boys = ["Kwasi", "Kwadwo", "Kwabena", "Kwaku", "Yaw", "Kofi", "Kwame"];
+    let girls = ["Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua", "Ama"];
 
-    // 5. Setup Data Structures
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    
-    const maleNames = ["Kwasi", "Kwadwo", "Kwabena", "Kwaku", "Yaw", "Kofi", "Kwame"];
-    const femaleNames = ["Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua", "Ama"];
-
+    let dayBorn = days[answer];
     let akanName = "";
-    if (gender === "male") {
-        akanName = maleNames[dayOfWeek];
+
+    if (gender.value == "male") {
+        akanName = boys[answer];
     } else {
-        akanName = femaleNames[dayOfWeek];
+        akanName = girls[answer];
     }
 
-    // 6. Manipulate DOM to Output Results Safely
-    const bornDay = days[dayOfWeek];
-    const resultSection = document.getElementById('resultSection');
-    const resultText = document.getElementById('resultText');
+    document.getElementById("resultText").textContent =
+        "You were born on " + dayBorn + ". Your Akan name is " + akanName + ".";
 
-    resultText.textContent = `You were born on a ${bornDay}. Your Akan name is ${akanName}!`;
-    resultSection.classList.remove('hidden');
+    document.getElementById("resultSection").classList.remove("hidden");
 });
 
-// 7. Clear Form Fields After Event To Boost Portfolio State Polish
-document.getElementById('clearBtn').addEventListener('click', function() {
-    document.getElementById('akanForm').reset();
-    document.getElementById('resultSection').classList.add('hidden');
+let clearButton = document.getElementById("clearBtn");
+
+clearButton.addEventListener("click", function() {
+    document.getElementById("birthForm").reset();
+    document.getElementById("resultSection").classList.add("hidden");
 });
